@@ -262,7 +262,7 @@ function showResult(typeCode) {
   resultDescription.innerHTML = `<p>${type.desc}</p>`;
 
   // Handle image
-  const imgPath = `images:/${typeCode}.png`;
+  const imgPath = `images/${typeCode}.png`;
   resultImage.src = imgPath;
   resultImage.alt = `${type.name} - ${typeCode}`;
   resultImage.style.display = 'block';

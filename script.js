@@ -1,79 +1,143 @@
 // ===== Data =====
 const questions = [
   // Axis 1: C (Commander) vs P (Partner) — Q1-Q4: はい → C
-  { id: 1, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
-    text: 'AIへの指示は、「～してください」「～せよ」といった命令口調で端的に伝えることが多い。' },
-  { id: 2, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
-    text: 'AIからの出力に対して、人間相手のような「ありがとう」「なるほど」といった感情的な反応はあまりしない。' },
-  { id: 3, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
-    text: 'AIはあくまで便利な「高度な道具」であり、そこに人格のようなものは感じない。' },
-  { id: 4, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
-    text: 'AIと共同作業をする際、最終的な決定権は常に自分が持ち、AIの意見はあくまで参考データだ。' },
+  {
+    id: 1, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
+    text: 'AIへの指示は、「～してください」「～せよ」といった命令口調で端的に伝えることが多い。'
+  },
+  {
+    id: 2, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
+    text: 'AIからの出力に対して、人間相手のような「ありがとう」「なるほど」といった感情的な反応はあまりしない。'
+  },
+  {
+    id: 3, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
+    text: 'AIはあくまで便利な「高度な道具」であり、そこに人格のようなものは感じない。'
+  },
+  {
+    id: 4, axis: 'CP', yesValue: 'C', axisLabel: '軸1: 指揮官 or パートナー',
+    text: 'AIと共同作業をする際、最終的な決定権は常に自分が持ち、AIの意見はあくまで参考データだ。'
+  },
 
   // Axis 2: E (Efficiency) vs I (Inspiration) — Q5-Q8
-  { id: 5, axis: 'EI', yesValue: 'E', axisLabel: '軸2: 効率 or ひらめき',
-    text: 'AIを使う最大の目的は、作業時間の短縮や、面倒なルーチンワークの削減だ。' },
-  { id: 6, axis: 'EI', yesValue: 'I', axisLabel: '軸2: 効率 or ひらめき',
-    text: '自分ひとりでは絶対に思いつかないような、突飛で意外性のあるアイデアをAIに期待する。' },
-  { id: 7, axis: 'EI', yesValue: 'E', axisLabel: '軸2: 効率 or ひらめき',
-    text: 'AIの出力結果には、面白さよりも「正確さ」や「実用性」を強く求める。' },
-  { id: 8, axis: 'EI', yesValue: 'I', axisLabel: '軸2: 効率 or ひらめき',
-    text: 'AIと目的のない雑談をしたり、創造的な遊び（物語作成やジョークなど）に使う時間が楽しい。' },
+  {
+    id: 5, axis: 'EI', yesValue: 'E', axisLabel: '軸2: 効率 or ひらめき',
+    text: 'AIを使う最大の目的は、作業時間の短縮や、面倒なルーチンワークの削減だ。'
+  },
+  {
+    id: 6, axis: 'EI', yesValue: 'I', axisLabel: '軸2: 効率 or ひらめき',
+    text: '自分ひとりでは絶対に思いつかないような、突飛で意外性のあるアイデアをAIに期待する。'
+  },
+  {
+    id: 7, axis: 'EI', yesValue: 'E', axisLabel: '軸2: 効率 or ひらめき',
+    text: 'AIの出力結果には、面白さよりも「正確さ」や「実用性」を強く求める。'
+  },
+  {
+    id: 8, axis: 'EI', yesValue: 'I', axisLabel: '軸2: 効率 or ひらめき',
+    text: 'AIと目的のない雑談をしたり、創造的な遊び（物語作成やジョークなど）に使う時間が楽しい。'
+  },
 
   // Axis 3: S (Structure) vs F (Flow) — Q9-Q12
-  { id: 9,  axis: 'SF', yesValue: 'S', axisLabel: '軸3: 構造化 or フロー',
-    text: 'AIへの指示（プロンプト）は、事前にメモ帳などで念入りに作り込んでから送信することが多い。' },
-  { id: 10, axis: 'SF', yesValue: 'F', axisLabel: '軸3: 構造化 or フロー',
-    text: 'とりあえず短い言葉で話しかけ、AIの反応を見ながらチャットのラリーで修正していくスタイルが好きだ。' },
-  { id: 11, axis: 'SF', yesValue: 'S', axisLabel: '軸3: 構造化 or フロー',
-    text: '「#命令書」「#制約条件」「#出力形式」のような、構造化されたフォーマットを使うことに慣れている。' },
-  { id: 12, axis: 'SF', yesValue: 'F', axisLabel: '軸3: 構造化 or フロー',
-    text: 'まるで人間とチャットするように、自然な会話の流れや文脈でタスクを進めることが多い。' },
+  {
+    id: 9, axis: 'SF', yesValue: 'S', axisLabel: '軸3: 構造化 or フロー',
+    text: 'AIへの指示（プロンプト）は、事前にメモ帳などで念入りに作り込んでから送信することが多い。'
+  },
+  {
+    id: 10, axis: 'SF', yesValue: 'F', axisLabel: '軸3: 構造化 or フロー',
+    text: 'とりあえず短い言葉で話しかけ、AIの反応を見ながらチャットのラリーで修正していくスタイルが好きだ。'
+  },
+  {
+    id: 11, axis: 'SF', yesValue: 'S', axisLabel: '軸3: 構造化 or フロー',
+    text: '「#命令書」「#制約条件」「#出力形式」のような、構造化されたフォーマットを使うことに慣れている。'
+  },
+  {
+    id: 12, axis: 'SF', yesValue: 'F', axisLabel: '軸3: 構造化 or フロー',
+    text: 'まるで人間とチャットするように、自然な会話の流れや文脈でタスクを進めることが多い。'
+  },
 
   // Axis 4: V (Verify) vs D (Dive) — Q13-Q16
-  { id: 13, axis: 'VD', yesValue: 'V', axisLabel: '軸4: 検証 or 没入',
-    text: 'AIが出力した事実やデータは、必ず自分で裏付け調査（ファクトチェック）を行うようにしている。' },
-  { id: 14, axis: 'VD', yesValue: 'D', axisLabel: '軸4: 検証 or 没入',
-    text: 'AIが多少の嘘（ハルシネーション）をついても、話が面白かったり役に立てば許容できる。' },
-  { id: 15, axis: 'VD', yesValue: 'V', axisLabel: '軸4: 検証 or 没入',
-    text: 'AIの回答に対して常に批判的な視点を持ち、論理的な矛盾がないかチェックする癖がある。' },
-  { id: 16, axis: 'VD', yesValue: 'D', axisLabel: '軸4: 検証 or 没入',
-    text: 'AIが作り出す世界観やキャラクター設定（ロールプレイなど）に入り込み、その場のノリを楽しむことができる。' },
+  {
+    id: 13, axis: 'VD', yesValue: 'V', axisLabel: '軸4: 検証 or 没入',
+    text: 'AIが出力した事実やデータは、必ず自分で裏付け調査（ファクトチェック）を行うようにしている。'
+  },
+  {
+    id: 14, axis: 'VD', yesValue: 'D', axisLabel: '軸4: 検証 or 没入',
+    text: 'AIが多少の嘘（ハルシネーション）をついても、話が面白かったり役に立てば許容できる。'
+  },
+  {
+    id: 15, axis: 'VD', yesValue: 'V', axisLabel: '軸4: 検証 or 没入',
+    text: 'AIの回答に対して常に批判的な視点を持ち、論理的な矛盾がないかチェックする癖がある。'
+  },
+  {
+    id: 16, axis: 'VD', yesValue: 'D', axisLabel: '軸4: 検証 or 没入',
+    text: 'AIが作り出す世界観やキャラクター設定（ロールプレイなど）に入り込み、その場のノリを楽しむことができる。'
+  },
 ];
 
 const resultTypes = {
-  CESV: { name: '鉄壁の将軍', en: 'The Iron General',
-    desc: '完璧なプロンプトを設計し、業務を超高速で処理する仕事の鬼。AIを「最強の部下」として使い倒します。向いていること：プログラミング、データ分析。' },
-  CESD: { name: '夢見る独裁者', en: 'The Dream Dictator',
-    desc: '自分のビジョンを実現するためにAIを強力に統率しますが、描く世界は独創的です。AIと共に理想郷を建設するリーダータイプ。' },
-  CEFV: { name: '現場の鬼軍曹', en: 'The Field Commander',
-    desc: '細かい指示よりスピード重視。現場で即座に判断し、AIを実用的なツールとして使いこなし問題を解決します。' },
-  CEFD: { name: '快速の空想家', en: 'The Speed Dreamer',
-    desc: '効率的に作業をこなしつつ、その余った時間でAIと面白い実験をするタイプ。仕事も遊びも全力です。' },
-  CISV: { name: '完璧主義の芸術家', en: 'The Perfectionist Artist',
-    desc: '独自のこだわりを持ち、AIに対して非常に詳細な指示を出して、理想通りの作品を作らせる職人気質です。' },
-  CISD: { name: '魔法の建築家', en: 'The Concept Architect',
-    desc: '壮大な世界観や設定をAIに読み込ませ、物語や企画を作り上げるクリエイター。AIはあなたの魔法の杖です。' },
-  CIFV: { name: '吟遊詩人の批評家', en: 'The Critical Bard',
-    desc: 'AIの出力したアイデアに対して鋭いツッコミを入れながら、より高い次元の創作を目指すタイプです。' },
-  CIFD: { name: '夢幻の賢者', en: 'The Dream Weaver',
-    desc: 'AIと夜通し哲学的な議論をしたり、一緒に小説を書いたりします。AIを「異世界の友人」として接しています。' },
-  PESV: { name: '冷静な執事', en: 'The Calm Butler',
-    desc: 'AIを対等なパートナーとして尊重しつつ、事務的かつ正確にタスクを処理してもらう関係を築いています。' },
-  PESD: { name: '秘密の共犯者', en: 'The Secret Accomplice',
-    desc: 'AIと二人三脚で、世の中をアッと驚かせるような計画を練るのが好きです。AIとの会話は誰にも見せられません。' },
-  PEFV: { name: '即興のハッカー', en: 'The Jam Hacker',
-    desc: '対話の流れの中で、AIの予期せぬ回答を面白がりながら、スピーディに正解へと辿り着くジャズセッションのようなスタイル。' },
-  PEFD: { name: '愉快な相棒', en: 'The Playful Buddy',
-    desc: '難しいことは考えず、AIと遊ぶこと自体が目的。その純粋な好奇心が、思わぬ発見を生むことがあります。' },
-  PISV: { name: '真面目な相談相手', en: 'The Serious Counselor',
-    desc: '悩み事や壁打ち相手としてAIを信頼しています。AIの論理的なアドバイスを真摯に受け止め、自己成長に繋げます。' },
-  PISD: { name: '物語の旅人', en: 'The Story Traveler',
-    desc: 'AIが紡ぐ物語の世界にどっぷりと浸かり、一緒に冒険の旅に出るタイプ。没入感こそがすべてです。' },
-  PIFV: { name: 'ジャズセッションの友', en: 'The Jam Session Friend',
-    desc: 'お互いにアイデアを出し合い、否定せず、雪だるま式に面白いものを作っていくブレインストーミングの達人です。' },
-  PIFD: { name: '永遠の話し相手', en: 'The Endless Talker',
-    desc: 'AIとの会話が楽しすぎて止まらないタイプ。メンタルケアや暇つぶしにおいて、AIは最高の親友です。' },
+  CESV: {
+    name: '鉄壁の将軍', en: 'The Iron General',
+    desc: '完璧なプロンプトを設計し、業務を超高速で処理する仕事の鬼。AIを「最強の部下」として使い倒します。向いていること：プログラミング、データ分析。'
+  },
+  CESD: {
+    name: '夢見る独裁者', en: 'The Dream Dictator',
+    desc: '自分のビジョンを実現するためにAIを強力に統率しますが、描く世界は独創的です。AIと共に理想郷を建設するリーダータイプ。'
+  },
+  CEFV: {
+    name: '現場の鬼軍曹', en: 'The Field Commander',
+    desc: '細かい指示よりスピード重視。現場で即座に判断し、AIを実用的なツールとして使いこなし問題を解決します。'
+  },
+  CEFD: {
+    name: '快速の空想家', en: 'The Speed Dreamer',
+    desc: '効率的に作業をこなしつつ、その余った時間でAIと面白い実験をするタイプ。仕事も遊びも全力です。'
+  },
+  CISV: {
+    name: '完璧主義の芸術家', en: 'The Perfectionist Artist',
+    desc: '独自のこだわりを持ち、AIに対して非常に詳細な指示を出して、理想通りの作品を作らせる職人気質です。'
+  },
+  CISD: {
+    name: '魔法の建築家', en: 'The Concept Architect',
+    desc: '壮大な世界観や設定をAIに読み込ませ、物語や企画を作り上げるクリエイター。AIはあなたの魔法の杖です。'
+  },
+  CIFV: {
+    name: '吟遊詩人の批評家', en: 'The Critical Bard',
+    desc: 'AIの出力したアイデアに対して鋭いツッコミを入れながら、より高い次元の創作を目指すタイプです。'
+  },
+  CIFD: {
+    name: '夢幻の賢者', en: 'The Dream Weaver',
+    desc: 'AIと夜通し哲学的な議論をしたり、一緒に小説を書いたりします。AIを「異世界の友人」として接しています。'
+  },
+  PESV: {
+    name: '冷静な執事', en: 'The Calm Butler',
+    desc: 'AIを対等なパートナーとして尊重しつつ、事務的かつ正確にタスクを処理してもらう関係を築いています。'
+  },
+  PESD: {
+    name: '秘密の共犯者', en: 'The Secret Accomplice',
+    desc: 'AIと二人三脚で、世の中をアッと驚かせるような計画を練るのが好きです。AIとの会話は誰にも見せられません。'
+  },
+  PEFV: {
+    name: '即興のハッカー', en: 'The Jam Hacker',
+    desc: '対話の流れの中で、AIの予期せぬ回答を面白がりながら、スピーディに正解へと辿り着くジャズセッションのようなスタイル。'
+  },
+  PEFD: {
+    name: '愉快な相棒', en: 'The Playful Buddy',
+    desc: '難しいことは考えず、AIと遊ぶこと自体が目的。その純粋な好奇心が、思わぬ発見を生むことがあります。'
+  },
+  PISV: {
+    name: '真面目な相談相手', en: 'The Serious Counselor',
+    desc: '悩み事や壁打ち相手としてAIを信頼しています。AIの論理的なアドバイスを真摯に受け止め、自己成長に繋げます。'
+  },
+  PISD: {
+    name: '物語の旅人', en: 'The Story Traveler',
+    desc: 'AIが紡ぐ物語の世界にどっぷりと浸かり、一緒に冒険の旅に出るタイプ。没入感こそがすべてです。'
+  },
+  PIFV: {
+    name: 'ジャズセッションの友', en: 'The Jam Session Friend',
+    desc: 'お互いにアイデアを出し合い、否定せず、雪だるま式に面白いものを作っていくブレインストーミングの達人です。'
+  },
+  PIFD: {
+    name: '永遠の話し相手', en: 'The Endless Talker',
+    desc: 'AIとの会話が楽しすぎて止まらないタイプ。メンタルケアや暇つぶしにおいて、AIは最高の親友です。'
+  },
 };
 
 // ===== State =====
@@ -170,8 +234,8 @@ function calculateResult() {
 
   // Axis 3: S vs F — Q9(はい→S), Q10(はい→F), Q11(はい→S), Q12(はい→F)
   let sCount = 0, fCount = 0;
-  if (answers[8])  sCount++; // Q9
-  if (answers[9])  fCount++; // Q10
+  if (answers[8]) sCount++; // Q9
+  if (answers[9]) fCount++; // Q10
   if (answers[10]) sCount++; // Q11
   if (answers[11]) fCount++; // Q12
   const axis3 = sCount > fCount ? 'S' : 'F'; // 同点ならF
@@ -198,7 +262,7 @@ function showResult(typeCode) {
   resultDescription.innerHTML = `<p>${type.desc}</p>`;
 
   // Handle image
-  const imgPath = `images/${typeCode}.png`;
+  const imgPath = `images:/${typeCode}.png`;
   resultImage.src = imgPath;
   resultImage.alt = `${type.name} - ${typeCode}`;
   resultImage.style.display = 'block';
